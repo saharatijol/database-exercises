@@ -7,9 +7,11 @@ CREATE TABLE IF NOT EXISTS albums(
     name VARCHAR(25) NOT NULL,
     release_date INT(4) UNSIGNED,
     sales FLOAT(11),
-    genre VARCHAR(20) DEFAULT 'Unknown',
+    genre VARCHAR(20) NOT NULL DEFAULT 'Unknown',
     PRIMARY KEY(id)
 );
+
+DESCRIBE albums;
 
 /*
 This sets field item to NOT allow Null entry and set "Unknown" as its default value instead
