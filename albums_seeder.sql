@@ -1,8 +1,10 @@
 USE codeup_test_db;
 
+TRUNCATE albums;
+
 INSERT INTO albums (artist, name, release_date, genre, sales)
 VALUES  ('Eagles', 'Hotel California', 1976, 'Rock, Soft Rock', 32),
-        ('Michael Jackson', 'Thriller', 1982, 'Pop, funk, rock', 66),
+        ('Michael Jackson', 'Thriller', 1982, 'Pop, Funk, Rock', 66),
         ('AC/DC', 'Back In Black', 1980, 'Metal, Hard Rock', 50),
         ('Led Zeppelin', 'Led Zeppelin IV', 1971, 'Hard Rock, Blues Rock', 35),
         ('Pink Floyd', 'The Wall', 1979, 'Art Rock, Progressive Rock', 30),
