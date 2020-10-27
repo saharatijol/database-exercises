@@ -1,6 +1,6 @@
 USE codeup_test_db;
 
-/**/
+-- #3
 SELECT * FROM albums WHERE artist = 'Pink Floyd';
 
 SELECT released_date FROM albums WHERE name = 'Supernatural';
