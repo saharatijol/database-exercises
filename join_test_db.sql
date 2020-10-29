@@ -6,7 +6,7 @@ VALUES('thomas', 'thomas@example.com', 2),
       ('cory', 'cory@example.com', 2),
       ('lili', 'lili@example.com', 2),
       ('jason', 'jason@example.com', null);
-select * from users;
+SELECT * FROM users;
 
 -- #3
 # USING JOIN
@@ -25,9 +25,10 @@ FROM users AS u
 RIGHT JOIN roles AS r ON r.id = u.role_id;
 
 -- #4 WERE TOLD TO SKIP BUT TRIED ANYWAY, FOUND SOLUTION IN STACK OVERFLOW
-SELECT roles.name AS role_name, COUNT(roles.name)
-FROM users JOIN roles ON users.role_id = roles.id
-GROUP BY roles.name;
+SELECT r.name AS role, COUNT(r.name)
+FROM users AS u
+JOIN roles AS r ON u.role_id = r.id
+GROUP BY r.name;
 
 
 
