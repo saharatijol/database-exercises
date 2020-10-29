@@ -14,7 +14,7 @@ SELECT u.name AS user_name, r.name AS role_name
 FROM users AS u
 JOIN roles AS r ON r.id = u.role_id;
 
-# USING LEFT JOIN
+# USING LEFT JOIN - all users included + null roles
 SELECT u.name AS user_name, r.name AS role_name
 FROM users AS u
 LEFT JOIN roles AS r ON r.id = u.role_id;
@@ -24,8 +24,8 @@ SELECT u.name AS user_name, r.name AS role_name
 FROM users AS u
 RIGHT JOIN roles AS r ON r.id = u.role_id;
 
--- #4
-SELECT roles.name AS role_name, COUNT(*)
+-- #4 WERE TOLD TO SKIP BUT TRIED ANYWAY, FOUND SOLUTION IN STACK OVERFLOW
+SELECT roles.name AS role_name, COUNT(roles.name)
 FROM users JOIN roles ON users.role_id = roles.id
 GROUP BY roles.name;
 
