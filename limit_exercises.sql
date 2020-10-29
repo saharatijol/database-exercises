@@ -23,3 +23,8 @@ WHERE hire_date like '199%'
   AND birth_date like '%-12-25'
 ORDER BY birth_date, hire_date DESC
 LIMIT 5 OFFSET 45;
+
+-- NOTE:
+-- let LIMIT = # results per page
+-- let pageNumber = GIVEN
+-- let OFFSET = (pageNumber -1) * LIMIT
