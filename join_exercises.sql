@@ -18,7 +18,16 @@ WHERE dm.to_date = '9999-01-01'
     AND e.gender = 'F'
 ORDER BY d.dept_name;
 
--- #4 SKIPPED FOR NOW
+-- #4 Walk through solution
+SELECT t.title AS Title, COUNT(t.emp_no) AS Count
+FROM titles AS t
+    JOIN employees AS e ON t.emp_no = e.emp_no
+    JOIN dept_emp AS de on e.emp_no = de.emp_no
+WHERE de.dept_no = 'd009'
+  AND t.to_date = '9999-01-01'
+  AND de.to_date = '9999-01-01'
+  -- above checks employees who moved to new dept that left their previous titles
+GROUP BY t.title;
 
 
 -- #5
