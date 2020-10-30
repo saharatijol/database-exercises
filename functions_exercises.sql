@@ -1,7 +1,7 @@
 USE employees;
 
 -- #2
-SELECT CONCAT(e.first_name, ' ', e.last_name) AS employee_name
+SELECT CONCAT(e.first_name, ' ', e.last_name) AS 'Name'
 FROM employees AS e
 WHERE last_name LIKE 'E%'
   AND last_name LIKE '%E'
