@@ -7,3 +7,5 @@ CREATE TABLE cats (
     age INT,
     PRIMARY KEY (cat_id)
 );
+
+desc cats;
