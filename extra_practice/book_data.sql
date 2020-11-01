@@ -34,7 +34,48 @@ VALUES  ('The Namesake', 'Jhumpa', 'Lahiri', 2003, 32, 291),
 DESC books;
 SELECT * FROM books;
 
--- String Functions Lesson
+# STRING FUNCTIONS LESSON
+-- CONCAT
+SELECT CONCAT(author_fname, ' ', author_lname) FROM books;
 
+SELECT CONCAT(author_fname, ' ', author_lname) AS 'full_name' FROM books;
 
+SELECT author_fname AS first, author_lname AS last,
+       CONCAT(author_fname, ' ', author_lname) AS full_name
+FROM books;
+
+SELECT author_fname AS first, author_lname AS last,
+       CONCAT(author_lname, ', ', author_fname) AS full_name
+FROM books;
+
+-- CONCAT_WS = concat with separator
+SELECT CONCAT_WS(' - ', title, author_fname, author_lname) AS 'title - author'
+FROM books;
+
+# SUBSTRING
+SELECT SUBSTRING('Hello World', 1, 4);
+SELECT SUBSTRING('Hello World', 3);
+SELECT SUBSTRING('Hello World', -3);
+SELECT SUBSTRING('Hello World', -7);
+
+SELECT SUBSTRING(title, 1, 10) AS 'short title' from books;
+
+-- COMBINING CONCAT & SUBSTRING
+SELECT CONCAT(
+               SUBSTRING(title, 1, 10),
+               '...') AS 'short title'
+FROM books;
+
+-- REPLACE (original, remove this part, replace with this)
+SELECT REPLACE('Hello World', 'Hell', '%$#@');
+SELECT REPLACE('Hello World', 'l', '7');
+SELECT REPLACE('Hello World', 'o', '0');
+SELECT REPLACE('HellO World', 'o', '*'); -- it is case sensitive
+SELECT REPLACE('cheese bread coffee milk', ' ', ' and ');
+
+SELECT REPLACE(title, 'e', '3') FROM books;
+
+-- COMBINE REPLACE & SUBSTRING
+SELECT SUBSTRING(REPLACE(title, 'e', '3'), 1, 10)
+FROM books;
 
