@@ -40,3 +40,31 @@ SELECT name, breed from cats;
 SELECT name, age from cats where breed='Tabby';
 # q4
 SELECT cat_id, age from cats where cat_id=age;
+
+# UPDATE exercises (simple)
+UPDATE cats SET breed='Shorthair'
+WHERE breed='Tabby';
+
+UPDATE cats SET age=14
+WHERE name='Misty';
+
+UPDATE cats SET name = 'Jack'
+WHERE name = 'Jackson';
+
+UPDATE cats SET breed = 'British Shorthair'
+WHERE name = 'Ringo';
+
+UPDATE cats SET age = 12
+WHERE breed = 'Maine Coon';
+
+# DELETE exercise PRO TIP-> Always SELECT first
+SELECT * FROM cats WHERE age = 4;
+delete FROM cats WHERE age = 4;
+
+SELECT * FROM cats WHERE age = cat_id;
+delete FROM cats WHERE age = cat_id;
+
+delete FROM cats; -- OH NO!!! this deletes ALL entries inside cats table
+
+
+select * from cats;
