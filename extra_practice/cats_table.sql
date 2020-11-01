@@ -59,12 +59,12 @@ WHERE breed = 'Maine Coon';
 
 # DELETE exercise PRO TIP-> Always SELECT first
 SELECT * FROM cats WHERE age = 4;
-delete FROM cats WHERE age = 4;
+DELETE FROM cats WHERE age = 4;
 
 SELECT * FROM cats WHERE age = cat_id;
-delete FROM cats WHERE age = cat_id;
+DELETE FROM cats WHERE age = cat_id;
 
-delete FROM cats; -- OH NO!!! this deletes ALL entries inside cats table
+DELETE FROM cats; -- OH NO!!! this deletes ALL entries inside cats table
 
 
-select * from cats;
+SELECT * FROM cats;
