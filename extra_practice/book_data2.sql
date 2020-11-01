@@ -73,5 +73,7 @@ SELECT title, released_year, stock_quantity FROM books ORDER BY stock_quantity L
 
 SELECT title, author_lname FROM books ORDER BY author_lname, title;
 
-SELECT UPPER(CONCAT('My favorite author is ', author_fname, ' ', author_lname, '!')) AS yell FROM books ORDER BY author_lname;
+SELECT UPPER(CONCAT('My favorite author is ', author_fname, ' ', author_lname, '!')) AS yell
+FROM books
+ORDER BY author_lname;
 
