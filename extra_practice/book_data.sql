@@ -66,7 +66,7 @@ SELECT CONCAT(
                '...') AS 'short title'
 FROM books;
 
--- REPLACE (original, remove this part, replace with this)
+# REPLACE (original, remove this part, replace with this)
 SELECT REPLACE('Hello World', 'Hell', '%$#@');
 SELECT REPLACE('Hello World', 'l', '7');
 SELECT REPLACE('Hello World', 'o', '0');
@@ -79,3 +79,16 @@ SELECT REPLACE(title, 'e', '3') FROM books;
 SELECT SUBSTRING(REPLACE(title, 'e', '3'), 1, 10)
 FROM books;
 
+# REVERSE
+SELECT REVERSE('Hello World');
+SELECT REVERSE(author_fname) from books;
+
+# CHAR LENGTH
+SELECT CHAR_LENGTH('Hello World');
+SELECT author_lname, CHAR_LENGTH(author_lname) AS 'length' from books;
+
+-- "Eggers is 6 character long"
+SELECT CONCAT(author_lname, ' is ', CHAR_LENGTH(author_lname), ' characters long') FROM books AS 'Last name char length';
+
+# UPPER() and LOWER() --only takes in 1 argument
+SELECT CONCAT('MY FAVORITE BOOK IS THE ', UPPER(title)) FROM books;
