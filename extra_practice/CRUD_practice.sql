@@ -39,11 +39,11 @@ SELECT * FROM shirts WHERE article = 'polo shirt';
 
 UPDATE shirts SET last_worn = 0
 WHERE last_worn = 15;
-SELECT * FROM shirts WHERE last_worn = 15;
+SELECT * FROM shirts WHERE last_worn = 0;
 
 UPDATE shirts SET shirt_size = 'XS', color = 'off white'
 WHERE color = 'white';
-SELECT * FROM shirts WHERE shirt_size = 'XS' AND color = 'off white';
+SELECT * FROM shirts WHERE color = 'off white';
 
 SELECT * FROM shirts WHERE last_worn = 200;
 DELETE FROM shirts WHERE last_worn = 200;
@@ -55,6 +55,8 @@ SELECT * FROM shirts;
 
 -- Catastrophe!
 DELETE FROM shirts;
+DESC shirts;
 
 DROP table shirts;
+SHOW tables;
 
