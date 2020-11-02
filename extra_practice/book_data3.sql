@@ -23,5 +23,30 @@ SELECT released_year, COUNT(released_year) FROM books GROUP BY released_year;
 # MIN and MAX
 -- FIND the minimum released_year
 SELECT MIN(released_year) FROM books;
+SELECT MIN(pages) FROM books;
+SELECT MAX(pages) FROM books;
+
+-- This seems like it could work... BUT it doesn't, use subqueries to fix this
+SELECT MAX(pages), title FROM books;
+
+# SUBQUERIES
+SELECT title, pages FROM books
+WHERE pages = (SELECT MAX(pages) FROM books);
+-- Well, that's great but this is a bit slower because this is running 2 queries and run independently
+
+-- Faster way:
+SELECT * FROM books ORDER BY pages DESC LIMIT 1;
+SELECT * FROM books;
+
+# MIN AND MAX with GROUP BY
+-- Find the year that each author published their first book
+SELECT author_fname, author_lname, MIN(released_year)
+FROM books
+GROUP BY author_lname, author_fname;
+
+-- Find the longest page count for each author
+SELECT author_fname, author_lname, MAX(pages)
+FROM books
+GROUP BY author_lname, author_fname;
 
 
