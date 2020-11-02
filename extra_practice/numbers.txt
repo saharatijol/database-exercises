@@ -1,6 +1,6 @@
-
+=============================
 NUMERIC DATA TYPES WITH MYSQL
-
+=============================
 INT  - whole numbers
 
 DECIMAL - DECIMAL(5, 2) => 356.25
@@ -10,16 +10,17 @@ DECIMAL - DECIMAL(5, 2) => 356.25
         Example: you entered VALUES(7987654987654687) => mySQL will store 999.99
         - it also round up. 1.99 => mySQL will store 2.00
 
-FLOAT AND DOUBLE
-- are approximate while decimal are EXACT
+FLOAT AND DOUBLE - are approximate while decimal are EXACT
+=================
 
 So why use them if they're not exact?
 Answer:  Floats/Double can store larger numbers using less space in memory that decimal cannot BUT it comes at the cost of precision
 
 It's better to use DOUBLE if you want more precision if you had to choose.
 
------------------------------------------------------------------------------------------
+==============
 DATES AND TIMES
+===============
 DATE - stores values with a date but no time 'YYYY-MM-DD'
 TIME - stores values with a time but no date 'HH:MM:SS'
 DATETIME - stores values with a date AND time 'YYYY-MM-DD HH:MM:SS'
@@ -32,8 +33,9 @@ NOW() - gives current datetime, commonly used
 INSERT INTO people(birthdate, birthtime, birth_dt)
 VALUES('Microwave', CURDATE(), CURTIME(), NOW());
 
+============================
 FORMATTING DATES (and times)
-================
+=============================
 DAY()
 DAYNAME()
 DAYOFWEEK()
