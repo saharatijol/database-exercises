@@ -78,5 +78,27 @@ WHERE content = 'I found this offensive';
 
 SELECT * FROM comments2 ORDER BY changed_at DESC;
 
+# MORE DATA TYPES EXERCISE
+ -- What's a good use for CHAR? fixed-length characters such as states, TX, CA, NY. gender formats M/F
 
+SELECT CURTIME();
+SELECT CURDATE();
+SELECT DAYOFWEEK(CURDATE());
+SELECT DAYNAME(CURDATE());
+SELECT DATE_FORMAT(CURDATE(), '%c/%d/%Y');
+SELECT DATE_FORMAT(NOW(), '%M %D at %H:%i');
+
+CREATE TABLE tweets (
+    content VARCHAR(140),
+    username VARCHAR(20),
+    created_at TIMESTAMP DEFAULT NOW()
+);
+
+INSERT INTO tweets (content, username)
+VALUES ('this is my first tweet', 'stijol');
+
+INSERT INTO tweets (content, username)
+VALUES ('this is second tweet', 'stijol2');
+
+SELECT * FROM tweets;
 
