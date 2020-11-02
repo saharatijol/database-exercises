@@ -49,4 +49,44 @@ SELECT author_fname, author_lname, MAX(pages)
 FROM books
 GROUP BY author_lname, author_fname;
 
+# SUM FUNCTION
+SELECT SUM(pages) FROM books;
+
+-- SUM + Group BY
+-- Sum all pages author has written
+SELECT author_fname, author_lname, SUM(pages) FROM books
+GROUP BY author_lname, author_fname;
+
+# AVG - average data
+SELECT AVG(pages) FROM books;
+
+-- AVG + GROUP BY
+-- Calculate the average stock quantity for books released in the same year
+SELECT AVG(stock_quantity), released_year from books
+GROUP BY released_year;
+
+# EXERCISES
+SELECT * FROM books;
+
+SELECT COUNT(*) FROM books;
+
+SELECT released_year, COUNT(*) FROM books
+GROUP BY released_year;
+
+SELECT SUM(stock_quantity) FROM books;
+
+SELECT author_fname, author_lname, AVG(released_year)
+FROM books
+GROUP BY author_lname, author_fname;
+
+SELECT CONCAT(author_fname, ' ', author_lname) AS full_name, pages
+FROM books
+ORDER BY pages DESC LIMIT 1;
+
+SELECT released_year, COUNT(released_year), AVG(pages)
+FROM books
+GROUP BY released_year;
+
+
+
 
