@@ -83,7 +83,7 @@ SELECT CONCAT(author_fname, ' ', author_lname) AS full_name, pages
 FROM books
 ORDER BY pages DESC LIMIT 1;
 
-SELECT released_year, COUNT(released_year), AVG(pages)
+SELECT released_year AS 'year', COUNT(released_year) AS '#_books', AVG(pages) AS 'avg_pages'
 FROM books
 GROUP BY released_year;
 
