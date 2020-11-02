@@ -36,10 +36,28 @@ VALUES('Microwave', CURDATE(), CURTIME(), NOW());
 ============================
 FORMATTING DATES (and times)
 =============================
-DAY()
-DAYNAME()
-DAYOFWEEK()
-DAYOFYEAR()
+DAY() - gives you the number of day. 1 - 31
+DAYNAME() - gives you the name of day. Monday, tuesday, wednesday etc..
+DAYOFWEEK() - gives you number of week. Ex. 6 = Friday, 1 = sunday
+DAYOFYEAR() - gives you number of day of year out of 365 takes into account leap years
+
+What if we want => "April 21 2017"
+
+CONCAT(MONTHNAME(birthdate), ' ', DAY(birthdate), ' ', YEAR(birthdate));
+it's messy.. yikes
+
+BETTER SOLUTION => DATE_FORMAT(date, format)
+-- check docs for specifiers
+DATE_FORMAT(birth_dt, '%M %d %Y') => Yay!
+
+==========
+DATE MATH
+==========
+DATEDIFF() - gives you number of days
+DATE_ADD(date, INTERVAL expr unit)
+
+
+
 
 
 
