@@ -40,9 +40,13 @@ SELECT title, released_year FROM books
 WHERE released_year < 2000
 ORDER BY released_year;
 
-# &&
+# AND
+SELECT title, author_lname FROM books
+WHERE author_lname = 'Eggers' AND released_year > 2010;
 
-
-
+SELECT * FROM books
+WHERE author_lname = 'Eggers'
+AND released_year > 2010
+AND title LIKE '%novel%';
 
 
