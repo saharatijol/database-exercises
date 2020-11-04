@@ -35,6 +35,12 @@ SELECT 'a' > 'b'; -- 0
 SELECT 'A' > 'a'; -- 0
 SELECT 'A' = 'a'; -- 1
 
+# LESS THAN <
+SELECT title, released_year FROM books
+WHERE released_year < 2000
+ORDER BY released_year;
+
+# &&
 
 
 
