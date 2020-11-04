@@ -40,7 +40,7 @@ SELECT title, released_year FROM books
 WHERE released_year < 2000
 ORDER BY released_year;
 
-# AND
+# AND &&
 SELECT title, author_lname FROM books
 WHERE author_lname = 'Eggers' AND released_year > 2010;
 
@@ -48,5 +48,28 @@ SELECT * FROM books
 WHERE author_lname = 'Eggers'
 AND released_year > 2010
 AND title LIKE '%novel%';
+
+# OR ||
+SELECT title, author_lname, released_year FROM books
+WHERE author_lname = 'Eggers' OR released_year > 2010;
+
+SELECT title, author_lname, released_year, stock_quantity FROM books
+WHERE author_lname = 'Eggers' OR  released_year > 2010 OR stock_quantity > 100;
+
+# BETWEEN and NOT BETWEEN
+SELECT title, released_year FROM books
+WHERE released_year BETWEEN 2004 AND 2015;
+
+SELECT title, released_year FROM books
+WHERE released_year NOT BETWEEN 2004 AND 2015
+ORDER BY released_year;
+
+# CAST
+SELECT CAST('2020-05-02' AS DATETIME);
+
+SELECT name, birth_dt FROM people
+WHERE birth_dt BETWEEN CAST('1980-01-01' AS DATETIME ) AND CAST('2000-01-01' AS DATETIME );
+
+# IN
 
 
