@@ -126,3 +126,38 @@ SELECT title,
 FROM books;
 
 # LOGICAL OPERATORS EXERCISE
+# 1
+-- false, true, true
+
+# 2 select all books written before 1980(non-inclusive)
+SELECT * FROM books WHERE released_year < 1980;
+
+# 3 select all book written by eggers OR chabon
+SELECT * FROM books WHERE author_lname IN ('Eggers', 'Chabon');
+
+# 4 select all books written by lahiri, published after 2000
+SELECT * FROM books WHERE author_lname = 'Lahiri' AND released_year > 2000;
+
+# 5 select all books with page counts between 100 and 200
+SELECT * FROM books WHERE pages BETWEEN 100 AND 200;
+
+# 6 select all books where author_lname starts with 'c' or an 's'
+SELECT * FROM books WHERE author_lname LIKE 's%' OR author_lname LIKE 'c%';
+
+# 7
+SELECT title, author_lname,
+       CASE
+           WHEN title LIKE '%stories%' THEN 'Short stories'
+           WHEN title = 'just kids' OR title = 'A Heartbreaking Work of Staggering Genius' THEN 'Memoir'
+           ELSE 'Novel'
+        END AS TYPE
+FROM books;
+
+#8
+SELECT author_lname,
+       CASE
+           WHEN COUNT(title) > 1 THEN CONCAT(COUNT(title), ' books')
+           ELSE CONCAT(COUNT(title), ' book')
+       END AS COUNT
+FROM books
+GROUP BY author_lname, author_fname;
