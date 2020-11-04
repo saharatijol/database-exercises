@@ -1,0 +1,28 @@
+=======================
+RELATIONSHIPS AND JOINS
+=======================
+
+REAL WORLD DATA IS MESSY AND INTERRELATED
+
+RELATIONSHIPS BASICS:
+1. One to One Relationship
+- 1 customer to 1 customer detail table
+
+2. One to Many Relationship
+- most common
+- 1 book can have many reviews where reviews belong to 1 book
+
+3. Many to Many Relationship
+- also common
+- books can have many authors and authors can have many books
+- 2 way
+
+1 : MANY / One to Many
+- Most common
+- Customers & Orders
+
+We want to store...
+-customer's first and last name
+-customer's email
+-the date of the purchase
+-the price of the order
