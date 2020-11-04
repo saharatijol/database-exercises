@@ -70,6 +70,23 @@ SELECT CAST('2020-05-02' AS DATETIME);
 SELECT name, birth_dt FROM people
 WHERE birth_dt BETWEEN CAST('1980-01-01' AS DATETIME ) AND CAST('2000-01-01' AS DATETIME );
 
-# IN
+# IN and NOT IN
+-- Longer way
+SELECT title, author_lname FROM books
+WHERE author_lname = 'Carver' OR author_lname = 'Lahiri' OR author_lname = 'Smith';
 
+-- Shorter way using IN
+SELECT title, author_lname FROM books
+WHERE author_lname IN ('Carver', 'Lahiri', 'Smith');
+
+SELECT title, released_year FROM books
+WHERE released_year IN (2017, 1985);
+
+SELECT title, released_year FROM books
+WHERE released_year >= 2000 AND released_year NOT IN(2000, 2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016);
+
+-- there's still a better way
+SELECT title, released_year FROM books
+WHERE released_year >= 2000 AND released_year % 2 != 0
+ORDER BY released_year;
 
