@@ -14,12 +14,12 @@ SELECT u.name AS user_name, r.name AS role_name
 FROM users AS u
 JOIN roles AS r ON r.id = u.role_id;
 
-# USING LEFT JOIN - all users included + null roles
+#  -- USING LEFT JOIN - all users included + null roles
 SELECT u.name AS user_name, r.name AS role_name
 FROM users AS u
 LEFT JOIN roles AS r ON r.id = u.role_id;
 
-# USING RIGHT JOIN - shows all the roles even one that is unassigned
+# -- USING RIGHT JOIN - shows all the roles even one that is unassigned
 SELECT u.name AS user_name, r.name AS role_name
 FROM users AS u
 RIGHT JOIN roles AS r ON r.id = u.role_id;

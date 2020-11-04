@@ -66,3 +66,38 @@ WHERE last_name LIKE '%q%'
    AND last_name NOT LIKE '%qu%';
 
 
+USE adlister_db;
+
+SELECT users.email , ad.title
+FROM users AS users
+         JOIN ad AS ad ON ad.title = user.id;
+
+SELECT ad_title, category_name
+FROM ad
+JOIN category on category.category_name = ad.id;
+
+SELECT ad_title, category_name
+FROM category
+JOIN ad on ad.ad_title = category.id;
+
+SELECT users.username , ad.title
+FROM users AS users
+JOIN users AS ad ON ad.title = user.id;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

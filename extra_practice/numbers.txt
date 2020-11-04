@@ -62,3 +62,36 @@ TIMESTAMPS
 
 
 
+
+salary --> employees
+
+employees --> salary
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
