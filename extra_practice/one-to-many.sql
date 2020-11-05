@@ -63,3 +63,32 @@ JOIN orders ON customers.id = orders.customer_id;
 SELECT first_name, last_name, order_date, amount
 FROM customers
 JOIN orders ON customers.id = orders.customer_id;
+
+-- ARBITRARY JOIN - don't do this!
+SELECT * FROM customers
+JOIN orders ON customers.id = orders.id;
+
+-- GETTING FANCIER
+SELECT first_name, last_name, order_date, amount
+FROM customers
+JOIN orders ON customers.id = orders.customer_id
+ORDER BY order_date;
+
+-- WHO'S OUR BIGGEST SPENDER?
+SELECT first_name, last_name, order_date, SUM(amount) AS total_spent
+FROM customers
+JOIN orders ON customers.id = orders.customer_id
+GROUP BY orders.customer_id, order_date
+ORDER BY total_spent DESC;
+
+# LEFT JOINS
+SELECT * FROM customers
+LEFT JOIN orders ON customers.id = orders.customer_id;
+
+SELECT first_name, last_name, order_date, IFNULL(SUM(amount), 0) AS total_spent
+FROM customers
+LEFT JOIN orders ON customers.id = orders.customer_id
+GROUP BY customers.id, order_date
+ORDER BY total_spent;
+
+# RIGHT JOINS
