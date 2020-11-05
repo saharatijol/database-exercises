@@ -34,3 +34,24 @@ VALUES ('2016/02/10', 99.99, 1),
        ('1999/04/11', 450.25, 5);
 
 SELECT * FROM orders;
+
+-- Using Subquery but this is cumbersome
+SELECT * FROM orders WHERE customer_id =
+    (
+        SELECT id FROM customers
+        WHERE last_name = 'George'
+    );
+
+# CROSS JOINS/IMPLICIT JOIN -- USELESS
+-- not meaningful but good to know
+-- this is what you call a CROSS JOIN it jams everything together, CRAZINESS
+SELECT * FROM customers, orders;
+
+# INNER JOIN - more relevant and meaningful
+-- IMPLICIT INNER JOIN
+SELECT * FROM customers, orders
+WHERE customers.id = orders.customer_id;
+
+SELECT first_name, last_name, order_date, amount
+FROM customers, orders
+WHERE customers.id = orders.customer_id;
