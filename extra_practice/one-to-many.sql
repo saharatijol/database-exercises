@@ -115,3 +115,59 @@ LEFT JOIN orders ON customers.id = orders.customer_id;
 -- this should delete orders made by boy george
 DELETE FROM customers WHERE email = 'george@gmail.com';
 
+# ONE-TO-MANY EXERCISE
+-- A student can have many papers, but many papers can belong to only ONE student
+
+CREATE TABLE students(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(30)
+);
+
+CREATE TABLE papers(
+  title VARCHAR(40),
+  grade INT UNSIGNED,
+  student_id INT,
+  FOREIGN KEY (student_id) REFERENCES students(id)
+);
+
+INSERT INTO students (first_name) VALUES
+('Caleb'), ('Samantha'), ('Raj'), ('Carlos'), ('Lisa');
+
+INSERT INTO papers (student_id, title, grade )
+VALUES(1, 'My First Book Report', 60),
+      (1, 'My Second Book Report', 75),
+      (2, 'Russian Lit Through The Ages', 94),
+      (2, 'De Montaigne and The Art of The Essay', 98),
+      (4, 'Borges and Magical Realism', 89);
+
+-- #1
+SELECT first_name, title, grade
+FROM students
+JOIN papers p ON students.id = p.student_id
+ORDER BY grade DESC;
+
+-- #2
+SELECT first_name, title, grade
+FROM students
+LEFT JOIN papers p ON students.id = p.student_id;
+
+-- #3
+SELECT first_name, IFNULL(title, 'MISSING'), IFNULL(grade, 0)
+FROM students
+LEFT JOIN papers p ON students.id = p.student_id;
+
+-- #4
+SELECT first_name, IFNULL(AVG(grade), 0) AS average
+FROM students
+LEFT JOIN papers p ON students.id = p.student_id
+GROUP BY first_name
+ORDER BY average DESC;
+
+-- #5
+SELECT first_name, IFNULL(AVG(grade), 0) AS average,
+
+FROM students
+LEFT JOIN papers p ON students.id = p.student_id
+GROUP BY first_name
+ORDER BY average DESC;
+
