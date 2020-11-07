@@ -92,3 +92,26 @@ GROUP BY customers.id, order_date
 ORDER BY total_spent;
 
 # RIGHT JOINS
+-- this is good to use to spot any mistakes or missing records that we don't see from inner or right joins
+-- for example, what if someone accidentally deleted a customer but the records still persists for orders.
+-- Easier to find orphan data
+# NOTE: Tried to insert into orders but the constraint of foreign key is preventing it
+SELECT * FROM customers
+RIGHT JOIN orders ON customers.id = orders.customer_id;
+
+# ON DELETE CASCADE
+CREATE TABLE orders(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    order_date DATE,
+    amount DECIMAL(8,2),
+    customer_id INT,
+    FOREIGN KEY(customer_id) REFERENCES customers(id)
+    ON DELETE CASCADE
+);
+
+-- this means:  when a customer is deleted that has corresponding order, delete the order as well.
+SELECT * FROM customers
+LEFT JOIN orders ON customers.id = orders.customer_id;
+-- this should delete orders made by boy george
+DELETE FROM customers WHERE email = 'george@gmail.com';
+
