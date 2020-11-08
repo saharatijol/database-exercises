@@ -123,6 +123,11 @@ VALUES
 SELECT * FROM users;
 SELECT * FROM photos;
 SELECT * FROM comments;
+SELECT * FROM likes;
+SELECT * FROM follows;
+SELECT * FROM tags;
+SELECT * FROM photo_tags;
+
 
 SELECT username, photos.image_url
 FROM photos
