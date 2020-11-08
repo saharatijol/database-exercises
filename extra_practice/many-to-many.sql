@@ -122,5 +122,13 @@ LEFT JOIN reviews ON reviewers.id = reviews.reviewer_id
 GROUP  BY reviewers.id;
 
 
+-- #7 Combine series title, reviews rating, reviewers first and last name
+-- Here we are combining all three tables
+SELECT title, rating, CONCAT(first_name,' ', last_name) as 'reviewer'
+FROM reviewers
+JOIN reviews ON reviewers.id = reviews.reviewer_id
+JOIN series ON series.id = reviews.series_id
+ORDER BY title;
+
 
 
