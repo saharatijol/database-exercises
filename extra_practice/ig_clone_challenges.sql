@@ -49,3 +49,14 @@ ORDER BY total_tags_used DESC
 LIMIT 5;
 
 
+-- 7. We have a small problem with bots on our site.. Find users who have liked every single photo on the site
+-- Find users who could be bots
+SELECT username, user_id, COUNT(*) AS 'number_of_likes'
+FROM users
+JOIN likes ON users.id = likes.user_id
+GROUP BY users.id
+HAVING number_of_likes = (SELECT COUNT(*) FROM photos); -- total photos is 257 but if we want something more dynamic bec new photos are posted everyday
+-- this will be the better solution (line 58)
+
+
+
