@@ -1,0 +1,14 @@
+
+=============
+MANY : MANY
+=============
+
+Some examples:
+Books <-> Authors
+Blog Posts <-> Tags
+Students <-> Classes
+
+Imagine we're building a tv show reviewing application
+
+Series Data      <->     Reviews Data      <->    Reviewers Data
+tv shows                 join table               names

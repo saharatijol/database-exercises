@@ -152,7 +152,7 @@ FROM students
 LEFT JOIN papers p ON students.id = p.student_id;
 
 -- #3
-SELECT first_name, IFNULL(title, 'MISSING'), IFNULL(grade, 0)
+SELECT first_name, IFNULL(title, 'MISSING') AS title, IFNULL(grade, 0) AS grade
 FROM students
 LEFT JOIN papers p ON students.id = p.student_id;
 
