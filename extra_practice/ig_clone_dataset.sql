@@ -73,3 +73,4 @@ SELECT * FROM likes;
 SELECT * FROM follows;
 SELECT * FROM tags;
 SELECT * FROM photo_tags;
+SELECT COUNT(*) FROM likes;
