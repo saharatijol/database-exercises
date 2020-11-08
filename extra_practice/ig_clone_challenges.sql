@@ -9,4 +9,11 @@ ORDER BY created_at LIMIT 5;
 SELECT DAYNAME(created_at) AS 'day', COUNT(*) AS 'total'
 FROM users
 GROUP BY day
-ORDER BY total DESC;
+ORDER BY total DESC
+LIMIT 2;
+
+-- 3. Target inactive users with an email campaign. Find users who have never posted a photo
+SELECT username, image_url
+FROM photos
+RIGHT JOIN users u on photos.user_id = u.id
+WHERE image_url IS NULL;
