@@ -87,6 +87,12 @@ FROM series
 LEFT JOIN reviews ON series.id = reviews.series_id
 WHERE rating IS NULL;
 
+-- #5 show avg rating by genre
+SELECT genre, AVG(rating) AS avg_ratings
+FROM series
+JOIN reviews ON series.id = reviews.series_id
+GROUP BY genre;
+
 
 
 
