@@ -36,6 +36,19 @@ CREATE TABLE likes (
         -- Gives you a unique combination
 );
 
+-- NOTE: Relationship Troubles:
+-- Followees <-> Follower relationship may pose a problem because follower id and followee id references back to users id table field
+-- we must enforce that this will be one-way relationship on both sides
+-- ensure that we don't have duplicated follows.
+-- Example: if i follow bretman, that means i can't follow him again, there can't be duplicates of ME that follows bretman
+CREATE TABLE follows (
+    follower_id INT NOT NULL,
+    followee_id INT NOT NULL,
+    created_at TIMESTAMP DEFAULT NOW(),
+    FOREIGN KEY (follower_id) REFERENCES users(id),
+    FOREIGN KEY (followee_id) REFERENCES users(id),
+    PRIMARY KEY (follower_id, followee_id)
+);
 
 INSERT INTO users (username)
 VALUES('BlueTheCat'), ('CharlieBrown'), ('SaraTijol');
@@ -55,12 +68,22 @@ VALUES (1,1),
        (1,3),
        (3,3);
 
+INSERT INTO follows (follower_id, followee_id)
+VALUES (1,2),
+       (1,3),
+       (3,1),
+       (2,3);
+
 SELECT * FROM likes;
+SELECT * FROM follows;
+
+-- Won't work due to duplicate entry. Passed the test
+# INSERT INTO follows(follower_id, followee_id) VALUES (1,3);
 
 -- This will NOT work bec of primary key constraint. Will not allow due to duplicate entry :)
-INSERT INTO likes (user_id, photo_id)
-VALUES
-(1,1);
+# INSERT INTO likes (user_id, photo_id)
+# VALUES
+# (1,1);
 
 
 
