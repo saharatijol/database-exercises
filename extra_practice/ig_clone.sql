@@ -50,6 +50,28 @@ CREATE TABLE follows (
     PRIMARY KEY (follower_id, followee_id)
 );
 
+-- Hashstags schema many-to-many
+-- PROS in doing it this way:
+    -- Unlimited number of tags
+    -- can add additional information
+-- CONS:
+    -- More work when inserting/updating
+    -- Worry about orphan data (nulls or incomplete row data)
+
+CREATE TABLE tags (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    tag_name VARCHAR(255) UNIQUE,
+    created_at TIMESTAMP DEFAULT NOW()
+);
+
+CREATE TABLE photo_tags (
+    photo_id INT NOT NULL,
+    tag_id INT NOT NULL,
+    FOREIGN KEY(photo_id) REFERENCES photos(id),
+    FOREIGN KEY(tag_id) REFERENCES tags(id),
+    PRIMARY KEY (photo_id, tag_id)
+);
+
 INSERT INTO users (username)
 VALUES('BlueTheCat'), ('CharlieBrown'), ('SaraTijol');
 
@@ -74,8 +96,19 @@ VALUES (1,2),
        (3,1),
        (2,3);
 
-SELECT * FROM likes;
-SELECT * FROM follows;
+INSERT INTO tags (tag_name)
+VALUES ('adorable'),
+       ('cute'),
+       ('sunrise');
+
+INSERT INTO photo_tags (photo_id, tag_id)
+VALUES
+       (1,1),
+       (1,2),
+       (2,3),
+       (3,2);
+
+# INSERT INTO photo_tags(photo_id, tag_id) VALUES(1,1);
 
 -- Won't work due to duplicate entry. Passed the test
 # INSERT INTO follows(follower_id, followee_id) VALUES (1,3);
