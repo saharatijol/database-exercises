@@ -81,7 +81,6 @@ for (var i = 0; i < 500; i++) {
     data.push([
         faker.internet.email(),
         faker.date.past(),
-        i
     ]);
 }
 // test it
