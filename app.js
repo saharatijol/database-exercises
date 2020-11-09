@@ -20,13 +20,13 @@ connection.end();
 
 
 // Another example: SELECTING DATA
-var q = 'SELECT * FROM users';
-
-connection.query(q, function (error, results, fields) {
-    if (error) throw error;
-    console.log(results[1].email);
-});
-connection.end();
+// var q = 'SELECT * FROM users';
+//
+// connection.query(q, function (error, results, fields) {
+//     if (error) throw error;
+//     console.log(results[1].email);
+// });
+// connection.end();
 
 // INSERTING DATA
 // var q = 'INSERT INTO users(email) VALUES("rusty@gmail.com")';
@@ -37,9 +37,39 @@ connection.end();
 // connection.end();
 
 // INSERTING DATA PART 2
-var person = {email: faker.internet.email()};
+// var person = {
+//                 email     : faker.internet.email(),
+//                 created_at: faker.date.past()
+// };
+//
+// var end_result = connection.query('INSERT INTO users SET ?', person, function(err, result) {
+//     if (err) throw err;
+//     console.log(result);
+// });
 
-var end_result = connection.query('INSERT INTO users SET ?', person, function(err, result) {
-    if (err) throw err;
+// mySQL/Node Magic, passing a single person
+// var person = {
+//     email: faker.internet.email(),
+//     created_at: faker.date.past()
+// };
+
+// var end_result = connection.query('INSERT INTO users SET ?', person, function(err, result) {
+//   if (err) throw err;
+//   console.log(result);
+// });
+
+// console.log(end_result.sql)
+// connection.end();
+
+// INSERTING LOTS OF DATA
+var data = [
+    ['blah@gmail.com', '2017-05-01 03:51:37'],
+    ['ugh@gmail.com', '2017-05-01 03:51:37'],
+    ['meh@gmail.com'], '2017-05-01 03:51:37']
+];
+
+var q = 'INSERT INTO users (email, created_at) VALUES ?';
+connection.query(q, [data], function(err, result) {
+    console.log(err);
     console.log(result);
 });
