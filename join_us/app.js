@@ -7,6 +7,7 @@ let app = express();
 // Configure express application
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.static(__dirname + "/public"));
 
 // MySQL Database connection
 let connection = mysql.createConnection({
@@ -48,7 +49,9 @@ app.post("/register", function(req, res) {
     let person = {email: req.body.email};
     connection.query('INSERT INTO users SET ?', person, function(err, result) {
         if (err) throw err;
-        console.log(result);
+        //console.log(result);
+        res.send("Thanks for joining our mail list!");
+        // res.redirect("/");
     });
 });
 
