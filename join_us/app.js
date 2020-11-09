@@ -21,7 +21,8 @@ app.get("/", function(req, res) {
     connection.query(q, function(err, results) {
        if (err) throw err;
        let count = results[0].count;
-       res.send("We have " + count + " users in our db");
+       //res.send("We have " + count + " users in our db");
+        res.render("home", {data: count}); // This will look for Views directory > home.ejs
     });
     // Respond with that count
     //res.send("We have " + count + " users in our db");
@@ -30,7 +31,8 @@ app.get("/", function(req, res) {
 // Adding another Route
 app.get("/joke", function(req, res) {
    let joke = "<strong>what do you call a dog that can do magic tricks?</strong> A <em>labracadabrador.</em>";
-    res.send(joke);
+    //res.send(joke);
+    res.render("home");
 });
 
 // Another Route (Should return a random number as response)
