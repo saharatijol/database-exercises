@@ -2,7 +2,7 @@ USE join_us;
 
 -- Challenge 1: Find earliest date a user joined
 SELECT
-DATE_FORMAT(MIN(created_at), "%M %D %Y") AS 'earliest_date'
+DATE_FORMAT(MIN(created_at), '%M %D %Y') AS 'earliest_date'
 FROM users;
 
 -- Challenge 2: Find email of the first (earliest) user
@@ -33,3 +33,5 @@ SELECT
 FROM users
 GROUP BY provider
 ORDER BY total_users DESC;
+
+SELECT * FROM users;
