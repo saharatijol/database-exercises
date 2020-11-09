@@ -62,14 +62,35 @@ connection.end();
 // connection.end();
 
 // INSERTING LOTS OF DATA
-var data = [
-    ['blah@gmail.com', '2017-05-01 03:51:37'],
-    ['ugh@gmail.com', '2017-05-01 03:51:37'],
-    ['meh@gmail.com'], '2017-05-01 03:51:37']
-];
+// var data = [
+//     ['blah@gmail.com', '2017-05-01 03:51:37'],
+//     ['ugh@gmail.com', '2017-05-01 03:51:37'],
+//     ['meh@gmail.com'], '2017-05-01 03:51:37']
+// ];
+//
+// var q = 'INSERT INTO users (email, created_at) VALUES ?';
+// connection.query(q, [data], function(err, result) {
+//     console.log(err);
+//     console.log(result);
+// });
+
+// BULK INSERTING 500 fake users
+var data = [];
+
+for (var i = 0; i < 500; i++) {
+    data.push([
+        faker.internet.email(),
+        faker.date.past(),
+        i
+    ]);
+}
+// test it
+//console.log(data);
 
 var q = 'INSERT INTO users (email, created_at) VALUES ?';
 connection.query(q, [data], function(err, result) {
     console.log(err);
     console.log(result);
 });
+
+connection.end();
