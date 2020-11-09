@@ -1,10 +1,12 @@
 // To allow use of express.js
 let mysql = require('mysql');
 let express = require('express');
+let bodyParser = require('body-parser')
 let app = express();
 
 // Configure express application
 app.set("view engine", "ejs");
+app.use(bodyParser.urlencoded({extended: true}));
 
 // MySQL Database connection
 let connection = mysql.createConnection({
@@ -22,7 +24,7 @@ app.get("/", function(req, res) {
        if (err) throw err;
        let count = results[0].count;
        //res.send("We have " + count + " users in our db");
-        res.render("home", {data: count}); // This will look for Views directory > home.ejs
+        res.render("home", {counter: count}); // This will look for Views directory > home.ejs
     });
     // Respond with that count
     //res.send("We have " + count + " users in our db");
@@ -41,7 +43,16 @@ app.get("/random_num", function(req, res) {
     res.send("Your luck number is " + num);
 })
 
-// This works here
+// Route for POST request, we needed a body-parser otherwise the response will return undefined
+app.post("/register", function(req, res) {
+    let person = {email: req.body.email};
+    connection.query('INSERT INTO users SET ?', person, function(err, result) {
+        if (err) throw err;
+        console.log(result);
+    });
+});
+
+// This works with IntelliJ
 app.listen(8080, function () {
     console.log("Server listening on port 8080!");
 });
